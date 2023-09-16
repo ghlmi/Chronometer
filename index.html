@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cornometer</title>
+    <link rel="stylesheet" href="index.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="display">
+        <h3 id="h">00</h3>
+        <h3 id="m">00</h3>
+        <h3 id="s">00</h3>
+      </div>
+      <a id="start" href="#">start</a>
+      <a id="stop" href="#">stop</a>
+      <a id="restart" href="#">restart</a>
+    </div>
+
+    <script>
+      var h = Number($("#h").text());
+      var m = Number($("#m").text());
+      var s = Number($("#s").text());
+
+      var int;
+      function count() {
+        s += 1;
+
+        if (s == 60) {
+          m += 1;
+          s = 0;
+        }
+
+        if (m == 60) {
+          h += 1;
+          m = 0;
+        }
+
+        $("#h").text(String(h).padStart(2, 0));
+        $("#m").text(String(m).padStart(2, 0));
+        $("#s").text(String(s).padStart(2, 0));
+      }
+
+      $("#stop").click(() => {
+        clearInterval(int);
+      });
+      $("#start").click(() => {
+        int = setInterval(count, 1000);
+      });
+      $("#restart").click(() => {
+        h = 0;
+        m = 0;
+        s = 0;
+        $("#h").text(String(h).padStart(2, 0));
+        $("#m").text(String(m).padStart(2, 0));
+        $("#s").text(String(s).padStart(2, 0));
+        clearInterval(int);
+        int = setInterval(count, 1000);
+      });
+    </script>
+  </body>
+</html>
