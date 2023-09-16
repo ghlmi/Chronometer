@@ -8,7 +8,6 @@
 
 body{
     height: 100vh;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,13 +16,12 @@ body{
 
 .container{
     width: 500px;
-    height: 200px;
+    height: auto;
     border: 1px solid rgba(248, 238, 238, 0.171);
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 1.2em;
-    padding: 1em;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    padding: 1.5em;
     backdrop-filter: blur(30px);
     box-shadow: 0 0 30px rgba(255, 255, 0, 0.587);
 }
@@ -33,7 +31,7 @@ body{
     grid-column-end: 4;
     background-color: rgba(180, 199, 199, 0.161);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 0 1em;
     border: 1px solid rgba(248, 238, 238, 0.171);
     align-items: center;
@@ -48,8 +46,13 @@ body{
     font-size: 3rem;
 }
 
+.container .btns{
+    display: flex;
+    justify-content: space-between;
+}
 
 .container a{
+    padding: 0.5em 2.2em;
     text-align: center;
     text-decoration: none;
     color: #000;
@@ -74,35 +77,26 @@ body{
     
     .container{
         width: 100%;
-        height: 300px;
-        padding: 1em ;
-        grid-template-columns: 50% 50%;
-        grid-template-rows: auto auto auto;
+        height: auto;
+        padding:2em 1em ;  
+        margin: 1em;
     }
 
 
-    #display{
-        grid-column-start: 0;
-        grid-column-end: 2;
-        width: 90%;
-    }
 
-    #display h3{
-        font-size: 2rem;
+    .container #display h3{
+        font-size: 40px;
     }
 
     a{
         font-size: 1.2rem;
     }
 
-    #start,#stop{
-        width: 90%;
-    }
+  
 
-    #restart{
-        width: 200%;
-        grid-column-start: 0;
-        grid-column-end: 2;
+    .btns{
+        flex-direction: column;
+        gap: 1em;
     }
 
 }

@@ -12,25 +12,35 @@
     ></script>
   </head>
   <body>
+
     <div class="container">
       <div id="display">
         <h3 id="h">00</h3>
         <h3 id="m">00</h3>
         <h3 id="s">00</h3>
+        <h3 id="ms">000</h3>
       </div>
+      <div class="btns">
       <a id="start" href="#">start</a>
       <a id="stop" href="#">stop</a>
-      <a id="restart" href="#">restart</a>
+      <a id="reset" href="#">reset</a>
+      </div>
     </div>
 
     <script>
       var h = Number($("#h").text());
       var m = Number($("#m").text());
       var s = Number($("#s").text());
+      var ms = Number($("#ms").text());
 
       var int;
       function count() {
-        s += 1;
+        ms += 7;
+
+        if (ms >= 1000) {
+          s += 1;
+          ms = 0;
+        }
 
         if (s == 60) {
           m += 1;
@@ -45,23 +55,25 @@
         $("#h").text(String(h).padStart(2, 0));
         $("#m").text(String(m).padStart(2, 0));
         $("#s").text(String(s).padStart(2, 0));
+        $("#ms").text(String(ms).padStart(3, 0));
       }
 
       $("#stop").click(() => {
         clearInterval(int);
       });
       $("#start").click(() => {
-        int = setInterval(count, 1000);
+        int = setInterval(count, 7);
       });
-      $("#restart").click(() => {
+      $("#reset").click(() => {
         h = 0;
         m = 0;
         s = 0;
+        ms = 0;
         $("#h").text(String(h).padStart(2, 0));
         $("#m").text(String(m).padStart(2, 0));
         $("#s").text(String(s).padStart(2, 0));
+        $("#ms").text(String(ms).padStart(3, 0));
         clearInterval(int);
-        int = setInterval(count, 1000);
       });
     </script>
   </body>
